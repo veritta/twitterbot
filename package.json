@@ -1,0 +1,16 @@
+{
+  "name": "twitterbot",
+  "version": "1.0.0",
+  "description": "the first twitter bot",
+  "main": "bot.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veritta/twitterbot.git"
+  },
+  "author": "Sunny Lai <arterialist@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veritta/twitterbot/issues"
+  },
+  "homepage": "https://github.com/veritta/twitterbot#readme"
+}
