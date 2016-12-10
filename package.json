@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/veritta/twitterbot/issues"
   },
-  "homepage": "https://github.com/veritta/twitterbot#readme"
+  "homepage": "https://github.com/veritta/twitterbot#readme",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
 }
