@@ -3,18 +3,18 @@ const config = require('./config.js');
 
 const Twitter = new twit(config);
 
-const params = {
-  q: '"what the duck"',
-  result_type: 'recent',
-  lang: 'en',
-};
+const screenNames = ['uglymads'];
 
 function onSearch(err, data) {
   if (err) {
-    console.log('AAAAAAAH');
+    console.log('AAAAAAAH', err);
   } else {
-    const filteredStatuses = data.statuses.filter(s => !s.retweeted_status);
-    reply(filteredStatuses[0]);
+    const filteredStatuses = data.statuses
+      .filter(s => !s.retweeted_status)
+      .filter(s => !screenNames.includes(s.user.screen_name));
+    if (filteredStatuses.length > 0) {
+      reply(filteredStatuses[0]);
+    }
   }
 }
 
@@ -26,8 +26,20 @@ function reply(status) {
     status: text,
     in_reply_to_status_id: id,
   };
-
+  screenNames.push(screenName);
+  console.log(`Tweeting @${screenName}`);
   Twitter.post('statuses/update', params);
 }
 
-Twitter.get('search/tweets', params, onSearch);
+function searchAndReply() {
+  const params = {
+    q: '"what the duck"',
+    result_type: 'recent',
+    lang: 'en',
+  };
+
+  Twitter.get('search/tweets', params, onSearch);
+}
+
+searchAndReply();
+setInterval(searchAndReply, 60000);
