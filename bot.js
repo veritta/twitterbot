@@ -36,7 +36,7 @@ function reply(status) {
   };
   screenNames.push(screenName);
   log(`Tweeting @${screenName}`);
-  // Twitter.post('statuses/update', params);
+  Twitter.post('statuses/update', params);
 }
 
 function searchAndReply() {
